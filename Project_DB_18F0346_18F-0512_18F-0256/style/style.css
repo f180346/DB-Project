@@ -1,0 +1,157 @@
+.login-form {
+  margin-top: 120px;
+  border: 3px solid #aeb6bf;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  background-image: url(../images/sars-cov-19.jpg);
+}
+
+#signin-body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/covid19.jpg);
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: rgba(248, 247, 216, 0.7); */
+}
+
+#signup-body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/covid-image.png);
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#Email,
+#Pass,
+#lb-fname,
+#lb-lname,
+#lb-new_email,
+#lb-username1,
+#lb-new_pass,
+#lb-mobileno,
+#lb-dob,
+#lb-gender,
+#lb-address,
+#lb-p-name,
+#lb-p-regno,
+#lb-p-reg-date,
+#lb-new_pass,
+#lb-p-mobileno,
+#lb-p-city,
+#lb-p-age,
+#lb-p-gender,
+#lb-p-reg,
+#lb-ward,
+#lb-p-disc-date,
+#lb-symtoms,
+#lb-p-doctor,
+#lb-p-travel,
+#lb-bedno,
+#lb-p-status,
+#lb-p-address {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#login {
+  color: white;
+}
+
+#dont {
+  color: darkgray;
+}
+#SignUP {
+  color: white;
+  font-weight: bold;
+}
+#login-button {
+  float: right;
+}
+
+#lb {
+  color: white;
+  padding-left: 5px;
+}
+
+.up {
+  color: white;
+  padding-left: 28rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.signup_page,
+#patient_reg-body,
+#patient_update_reg-body {
+  margin-top: 150px;
+  border: 3px solid #aeb6bf;
+  margin-bottom: 150px;
+  margin-left: 140px;
+  margin-right: 140px;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  background-image: url(../images/covid-image.png);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#lb-format,
+#lb-p-format,
+.reg {
+  color: white;
+  font-weight: bolder;
+}
+
+.error1 {
+  color: white;
+}
+
+#logo {
+  /* background-color:black; */
+  width: 150px;
+  height: 66px;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+.hp_body {
+  background-image: url(../images/medical.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hp{
+  max-width: 100%;
+  height: auto/9;
+  width: auto\9;
+}
+
+.corona_update{
+  color: #000000;
+  padding-top: 6rem;
+  
+  /* color:#FF9900; */
+}
+
+#search{
+  width: 208px;
+  height: auto;
+  overflow: hidden;
+  margin: auto;
+}
+
+

@@ -1,0 +1,66 @@
+header {
+    position: relative;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: "Candal", sans-serif;
+}
+
+nav {
+    background: #668cff;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 60px;
+}
+
+
+.logo h1 {
+    letter-spacing: 2px;
+    font-size: 30px;
+    flex:2;
+    margin-left: 100px;
+}
+
+.list-items {
+    flex: 2;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.list {
+    list-style: none;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    transition: 0.4s background;
+}
+
+.link:hover {
+    color: #ba4c4a;
+}
+
+.main {
+    background: #fe9a99;
+    height: 90vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.text p {
+    padding-top: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 25px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
