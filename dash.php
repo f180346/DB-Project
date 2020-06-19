@@ -44,26 +44,7 @@
     <a href="wards.php" class="btn btn-primary">Go to wards </a>
     </div>
 </div>
-       
-
-    
-    
-    nvvjdklgfkdlgk
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     </body>
 
 </html>
