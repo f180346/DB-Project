@@ -51,20 +51,20 @@ padding:0;
                 <div class="col-sm-5">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <select name="table" id="table" value="CAR">
+                            <select name="table" id="table" value="table">
+                                <option value="User">User</option>
                                 <option value="Paient">Patient Record</option>
                                 <option value="Doctor">Doctor Doctor</option>
                                 <option value="Isolation">Isolation Ward</option>
                                 <option value="Quarantine">Quarantine Ward</option>
-                                <option value="User">User</option>
                             </select>
-                            <select name="choice" id="choice" value="CAR">
+                            <select name="choice" id="choice" value="choice">
                                 <option value="ID">ID</option>
                                 <option value="Name">First Name</option>
                                 <option value="City">City</option>
                                 <option value="ALL">ALL Data</option>
                             </select>
-                            <input type="text" class="form-control" name="search" placeholder="ID/Name/City" aria-label="" aria-describedby="basic-addon1" value="<?php echo htmlentities($_POST['search']) ?>">
+                             <input type="text" class="form-control" name="search" placeholder="ID/Name/City" aria-label="" aria-describedby="basic-addon1" > 
                         </div>
                     </div>
                 </div> 
@@ -92,16 +92,9 @@ padding:0;
 <?php
 
 
-if($_POST['search'] != '')
-{
-    $msg = $_POST['search'];
-}
-
-$val = $_POST['search'];
-
 if (isset($_POST['btn-search'])) {
     $ID = $_POST['search'];
-    echo 'billi2020';
+    echo 'bill';
 
        if($_POST['table'] == 'User'){
         if($_POST['choice'] == 'ALL')
@@ -143,9 +136,9 @@ if (isset($_POST['btn-search'])) {
                   <th>Date of Birth</th>
                   <th>Address</th>
                 </tr>";
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row['fname'] . "</td><td>" . $row['lname'] . "</td><td>" . $row['username'] . "</td><td>" . $row['pass'] . "</td><td>" . $row['gender'] . "</td><td>" . $row['mobile'] . "</td><td>" . $row['email'] . "</td><td>" . $row['dob'] . "</td><td>" . $row['address'] . "</td></tr>";
-            }
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row['fname'] . "</td><td>" . $row['lname'] . "</td><td>" . $row['username'] . "</td><td>" . $row['pass'] . "</td><td>" . $row['gender'] . "</td><td>" . $row['mobile'] . "</td><td>" . $row['email'] . "</td><td>" . $row['dob'] . "</td><td>" . $row['address'] . "</td></tr>";
+                }
             echo "</table>";
         }
         }
@@ -166,40 +159,126 @@ if (isset($_POST['btn-search'])) {
                       <th>Date of Birth</th>
                       <th>Address</th>
                     </tr>";
-                while ($row = $result->fetch_assoc()) {
+                    $row = $result->fetch_assoc();
                     echo "<tr><td>" . $row['fname'] . "</td><td>" . $row['lname'] . "</td><td>" . $row['username'] . "</td><td>" . $row['pass'] . "</td><td>" . $row['gender'] . "</td><td>" . $row['mobile'] . "</td><td>" . $row['email'] . "</td><td>" . $row['dob'] . "</td><td>" . $row['address'] . "</td></tr>";
-                }
-                                echo $val;
+                                
                 echo "</table>";
-                echo'<form action="" method="post">';
-                echo '<div class="form-group" style="padding-top:1rem;">';
-                echo '<input type="Submit" class="btn btn-warning" id="btn-search" name="btn-search" value="Search" >';
-                echo '<input type="hidden"  name="search" value="<?php echo $val ?>">';
-                echo '<input type="Submit" class="btn btn-warning" name="btn-update" value="Update">';
-                echo '<input type="Submit" class="btn btn-warning" id="deleusama1te-btn" name="delete-btn" value="Delete" onclick="get_fun()">';
-
-                echo '</div>';
-                echo '</form>';
-                
             }
         }
+        elseif($_POST['choice'] == 'City')
+        {
+            $sql = "SELECT * FROM reg_user WHERE username ='$ID' AND DELETED = 0";
+            $result = mysqli_query($con, $sql);
+            if ($result->num_rows > 0) {
+                echo "<table><tr>
+                    <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                      <th>Password</th>
+                      <th>Gender</th>
+                      <th>Mobile</th>
+                      <th>Email</th>
+                      <th>Date of Birth</th>
+                      <th>Address</th>
+                    </tr>";
+                    $row = $result->fetch_assoc();
+                    echo "<tr><td>" . $row['fname'] . "</td><td>" . $row['lname'] . "</td><td>" . $row['username'] . "</td><td>" . $row['pass'] . "</td><td>" . $row['gender'] . "</td><td>" . $row['mobile'] . "</td><td>" . $row['email'] . "</td><td>" . $row['dob'] . "</td><td>" . $row['address'] . "</td></tr>";
+                                
+                echo "</table>";
+            }
+        }
+       }
+       elseif($_POST['table'] == 'Paient'){
+        if($_POST['choice'] == 'ALL')
+        {
+            $sql = "SELECT * FROM patient_record INNER JOIN q_ward on patient_record.REG_NO = q_ward.REG_NO AND patient_record.DELETED = 0 AND q_ward.DELETED = 0";
+        $result = mysqli_query($con, $sql);
+        if ($result->num_rows > 0) {
+            echo "<table><tr>
+                <th>Reristration no</th>
+                  <th>Registration Date</th>
+                  <th>Patient Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Mobile no</th>
+                  <th>Patient Address</th>
+                  <th>Patient City</th>
+                  <th>Ward Admitted</th>
+                  <th>SYMTOMS</th>
+                </tr>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td><td>". $row['SYMTOMS'] ."</td></tr>";
+            }
+            echo "</table>";
+        }
+        }
 
+        elseif($_POST['choice'] == 'Name')
+        {
+            $sql = "SELECT * FROM reg_user WHERE fname ='$ID' AND DELETED = 0";
+        $result = mysqli_query($con, $sql);
+        if ($result->num_rows > 0) {
+            echo "<table><tr>
+            <th>Reristration no</th>
+              <th>Registration Date</th>
+              <th>Patient Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Mobile no</th>
+              <th>Patient Address</th>
+              <th>Patient City</th>
+              <th>Ward Admitted</th>
+            </tr>";
+            
+                $row = $result->fetch_assoc();
+                echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td></tr>";            echo "</table>";
+        }
+        }
+
+        elseif($_POST['choice'] == 'ID')
+        {
+            $sql = "SELECT * FROM reg_user WHERE username ='$ID' AND DELETED = 0";
+            $result = mysqli_query($con, $sql);
+            if ($result->num_rows > 0) {
+                echo "<table><tr>
+                <th>Reristration no</th>
+                  <th>Registration Date</th>
+                  <th>Patient Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Mobile no</th>
+                  <th>Patient Address</th>
+                  <th>Patient City</th>
+                  <th>Ward Admitted</th>
+                </tr>";
+                    $row = $result->fetch_assoc();
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td></tr>";                                
+                echo "</table>";
+            }
+        }
+        elseif($_POST['choice'] == 'City')
+        {
+            $sql = "SELECT * FROM reg_user WHERE username ='$ID' AND DELETED = 0";
+            $result = mysqli_query($con, $sql);
+            if ($result->num_rows > 0) {
+                echo "<table><tr>
+                <th>Reristration no</th>
+                  <th>Registration Date</th>
+                  <th>Patient Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Mobile no</th>
+                  <th>Patient Address</th>
+                  <th>Patient City</th>
+                  <th>Ward Admitted</th>
+                </tr>";
+                    $row = $result->fetch_assoc();
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td></tr>";                                
+                echo "</table>";
+            }
+        }
        }
        
+       
 }
-if (isset($_POST['delete-btn'])){
-    echo "LA";
-    echo $val;
-    // echo $_POST['search'],"arbaz";
-    // echo $_POST['search'];
-    // $ID ="LLLL";
-   
-    $sql = "UPDATE reg_user SET DELETED = 1 WHERE username ='$ID' AND DELETED = 1";
-    if(mysqli_query($con, $sql)==TRUE)
-    {
-        echo "deleted Successfully";
-    }
-
-}
-
 ?>
