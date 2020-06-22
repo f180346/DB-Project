@@ -64,7 +64,7 @@ padding:0;
                                 <option value="City">City</option>
                                 <option value="ALL">ALL Data</option>
                             </select>
-                             <input type="text" class="form-control" name="search" placeholder="ID/Name/City" aria-label="" aria-describedby="basic-addon1" > 
+                             <input type="search" class="form-control" name="search" placeholder="ID/Name/City" aria-label="" aria-describedby="basic-addon1" > 
                         </div>
                     </div>
                 </div> 
@@ -77,12 +77,6 @@ padding:0;
                 
             </div>
         </form>
-<script>
-    function get_fun() {
-  document.getElementById("btn-search").innerHTML = "$_POST['search']";
-  
-}
-</script>
 
 
 </body>
@@ -94,7 +88,7 @@ padding:0;
 
 if (isset($_POST['btn-search'])) {
     $ID = $_POST['search'];
-    echo 'bill';
+    echo 'bill11';
 
        if($_POST['table'] == 'User'){
         if($_POST['choice'] == 'ALL')
