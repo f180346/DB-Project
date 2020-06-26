@@ -25,6 +25,7 @@
                             <input type="text" class="form-control" name="fname" value="<?php $myfile = fopen("id.txt", "r");$id = fgets($myfile);
 fclose($myfile); $sql = "SELECT * FROM reg_user WHERE username='$id' AND DELETED = 0"; $result = mysqli_query($con, $sql);$row = $result->fetch_assoc(); echo $row['fname'];?>" required>
                         </div>
+                        
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
