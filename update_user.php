@@ -7,10 +7,10 @@
     <?php include 'links/links.php' ?>
     <link rel="stylesheet" href="style/style.css">
     <?php include 'dataconnection.php' ?>
-    <title>signup</title>
+    <title>Updates User</title>
 </head>
 
-<body id="signup-body">
+<body id="signup-body" >
     <div class="signup_page">
         <div class="up">
             <h1>Sign Up</h1>
@@ -23,14 +23,11 @@
                         <div class="form-group">
                             <label for="fname" id="lb-fname">First Name</label>
                             <input type="text" class="form-control" name="fname" value="<?php
-if(isset($_POST['btn-update'])){
+if(isset($_POST['btn-del-user'])){
     $sql = "SELECT * FROM reg_user WHERE  DELETED = 0";
 $result = mysqli_query($con, $sql);
 $row = $result->fetch_assoc();
-//echo $row['lname'];
-// $msg = 11;
-echo $msg;
-}
+echo $row['lname'];}
 ?>
 " required>
                         </div>
@@ -67,6 +64,23 @@ echo $msg;
                         <div class="form-group">
                             <label for="new_pass" id="lb-new_pass">Password</label>
                             <input type="password" class="form-control" name="new_pass" placeholder="New Password" required>
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -85,7 +99,14 @@ echo $msg;
                     <div class="col-sm-3">
                         <div class="form-group ">
                             <label for="dob" id="lb-dob">Date of birth</label>
-                            <input type="date" class="form-control" name="dob" required>
+                            <input type="date" class="form-control" name="dob" value="<?php
+if(isset($_POST['btn-del-user'])){
+    $sql = "SELECT * FROM reg_user WHERE  DELETED = 0";
+$result = mysqli_query($con, $sql);
+$row = $result->fetch_assoc();
+echo $row['dob'];}
+?>
+"required>
                         </div>
                     </div>
                     <div class="col-sm-2">

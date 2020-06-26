@@ -6,7 +6,11 @@
     <title>dashboard</title>
 </head>
     <body>
-  
+  <style>
+  .card{
+    margin: auto;
+}
+  </style>
     <div class="row">    
     <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="images/patient.png" alt="Card image cap">

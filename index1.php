@@ -7,20 +7,28 @@
     <title>Home Page</title>
 </head>
 
-<body class="hp_body" onload="fetch()">
+<body class="hp_body">
+<style type="text/css">
+.nav-item{
+    padding-left: 1.5rem;
+}
+.nav-link:hover {
+    color: #FF0000 !important;
+}
+
+</style>
     <nav class="navbar navbar-expand-lg  fixed-top navbar-light" style="background-color:  #d0d3d4;">
         <a href="#"><img id="logo" style="margin-right:3rem" src="images/logo.png" id="logo"> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><a href="./Project_DB_18F0346_18F-0512_18F-0256/index.php"></a></span>
-
-        </button>
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" style="font-size: 1.3em !important;">
-                <li class="nav-item active">
+                <li class="nav-item active" >
                     <a class="nav-link" href="index1.php" style="font-size: 20;">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active h">
+                <li class="nav-item active">
                     <a class="nav-link" href="Statistics.php">Statistics <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
