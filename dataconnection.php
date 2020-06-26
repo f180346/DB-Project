@@ -5,6 +5,7 @@
     $db= 'db_project';
     $con= mysqli_connect($server, $user, $password, $db);
     $msg= "";
+    $id= "";
     if($con){
         echo '<div class="alert alert-primary" role="alert" id="err"> 
         A simple primary alert—check it out!

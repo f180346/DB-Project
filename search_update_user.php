@@ -6,7 +6,7 @@
     <?php include 'dataconnection.php' ?>
     <link rel="stylesheet" href="style/style.css">
 
-    <title>Updates User</title>
+    <title>10Update User</title>
     <style>
         *{
 margin:0;
@@ -44,7 +44,7 @@ padding:0;
 
 <body>
 
-    <form action="update_user.php" method="post" onSubmit="return checkform()">
+    <form action="" method="post" >
         <div class="container container-fluid">
             <div class="row">
                 <div class="col-sm-3"></div>
@@ -64,13 +64,34 @@ padding:0;
         </div>
     </form>
 
-<script>
-
-</script>
-
 </body>
 
 </html>
 
-
+<?php
+ if(isset($_POST['btn-del-user']))
+ {
+     $ID = $_POST['del_user'];
+    //  $myfile = fopen("id.txt", "w");
+    //  fwrite($myfile, $ID);
+    //  fclose($myfile);
+    $myfile = fopen("id.txt", "r");
+    fclose($myfile); echo $myfile;
+    $sql = "SELECT * FROM reg_user WHERE username = '$ID' AND DELETED = 0";
+    $result = mysqli_query($con, $sql);
+    $count  = mysqli_num_rows($result);
+    if ($count != 0) {
+        $is_exist = True;
+        
+        //echo '<h1>arbdddaz</h1>'    
+        ?>
+        <script>
+            // alert('Heelllo');
+             window.location.href ="update_user.php";
+        </script>
+         <?php
+    }
+   
+ }
+?>
 

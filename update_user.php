@@ -7,7 +7,7 @@
     <?php include 'links/links.php' ?>
     <link rel="stylesheet" href="style/style.css">
     <?php include 'dataconnection.php' ?>
-    <title>Updates User</title>
+    <title>20Updates User</title>
 </head>
 
 <body id="signup-body" >
@@ -22,14 +22,8 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="fname" id="lb-fname">First Name</label>
-                            <input type="text" class="form-control" name="fname" value="<?php
-if(isset($_POST['btn-del-user'])){
-    $sql = "SELECT * FROM reg_user WHERE  DELETED = 0";
-$result = mysqli_query($con, $sql);
-$row = $result->fetch_assoc();
-echo $row['lname'];}
-?>
-" required>
+                            <input type="text" class="form-control" name="fname" value="<?php $myfile = fopen("id.txt", "r");$id = fgets($myfile);
+fclose($myfile); $sql = "SELECT * FROM reg_user WHERE username='$id' AND DELETED = 0"; $result = mysqli_query($con, $sql);$row = $result->fetch_assoc(); echo $row['fname'];?>" required>
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -100,11 +94,11 @@ echo $row['lname'];}
                         <div class="form-group ">
                             <label for="dob" id="lb-dob">Date of birth</label>
                             <input type="date" class="form-control" name="dob" value="<?php
-if(isset($_POST['btn-del-user'])){
+if(isset($_POST['del_user'])){
     $sql = "SELECT * FROM reg_user WHERE  DELETED = 0";
 $result = mysqli_query($con, $sql);
 $row = $result->fetch_assoc();
-echo $row['dob'];}jjj
+echo $row['dob'];}
 ?>
 "required>
                         </div>
