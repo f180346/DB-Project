@@ -104,7 +104,7 @@ if(isset($_POST['btn-del-user'])){
     $sql = "SELECT * FROM reg_user WHERE  DELETED = 0";
 $result = mysqli_query($con, $sql);
 $row = $result->fetch_assoc();
-echo $row['dob'];}
+echo $row['dob'];}jjj
 ?>
 "required>
                         </div>
