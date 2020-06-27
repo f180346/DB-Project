@@ -72,18 +72,14 @@ padding:0;
  if(isset($_POST['btn-del-user']))
  {
      $ID = $_POST['del_user'];
-    //  $myfile = fopen("id.txt", "w");
-    //  fwrite($myfile, $ID);
-    //  fclose($myfile);
-    $myfile = fopen("id.txt", "r");
-    fclose($myfile); echo $myfile;
+     $myfile = fopen("id.txt", "w");
+     fwrite($myfile, $ID);
+     fclose($myfile);
     $sql = "SELECT * FROM reg_user WHERE username = '$ID' AND DELETED = 0";
     $result = mysqli_query($con, $sql);
     $count  = mysqli_num_rows($result);
     if ($count != 0) {
-        $is_exist = True;
-        
-        //echo '<h1>arbdddaz</h1>'    
+       
         ?>
         <script>
             // alert('Heelllo');

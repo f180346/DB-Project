@@ -1,8 +1,8 @@
 <html lang="en">
 
 <head>
-    <?php include 'links/links.php'; ?>
-    <?php include 'dataconnection.php' ?>
+    <?php include 'links/links.php';?>
+    <?php include 'dataconnection.php'?>
     <link rel="stylesheet" href="style/style.css">
     <title>login</title>
 </head>
@@ -54,15 +54,14 @@ if (isset($_POST['Login'])) {
     $password = $_POST['pass'];
     $sql = "SELECT * FROM reg_user WHERE username = '$username' AND pass = '$password' AND DELETED = 0";
     $result = mysqli_query($con, $sql);
-    $count  = mysqli_num_rows($result);
-    if ($count != 0) {    
-    ?>
+    $count = mysqli_num_rows($result);
+    if ($count != 0) {
+        ?>
         <script type="text/javascript">
             window.location = "dash.php";
         </script>
     <?php
-    } 
-    else {
+} else {
 
         $msg .= "Incorrect username or password";
         echo "<h3 class='error1'>$msg</h3>";

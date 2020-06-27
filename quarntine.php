@@ -227,16 +227,19 @@ if (isset($_POST['q_ward'])) {
     $oxy_m  = $_POST['oxy-m'];
     $travel = $_POST['pt'];
     $doc_id = $_POST['doc-id'];
+    $myfile = fopen("id.txt", "r");
+    $regno = fgets($myfile);
+    fclose($myfile);
     echo "<h1 style='color:white;'>'$symptoms','$bedno','$travel','$p_status','$temp_s','$temp_m ','$bp','$bp_s','$bp_d','$oxy_s','$oxy_m','$doc_id'</h1>";
-    $sql = "INSERT INTO q_ward (SYMTOMS,BED_NO,T_HISTORY,P_STATUS,TEMP_STATUS,TEMP_MEASUREMENT,BP_STATUS,BP_SYSTOLIC,
+    $sql = "INSERT INTO q_ward (REG_NO,SYMTOMS,BED_NO,T_HISTORY,P_STATUS,TEMP_STATUS,TEMP_MEASUREMENT,BP_STATUS,BP_SYSTOLIC,
     BP_DIASTOLIC,OXY_STATUS,OXY_SAT_LEVEL,DOC_ID) 
-    VALUES('$symptoms','$bedno','$travel','$p_status','$temp_s','$temp_m ','$bp','$bp_s','$bp_d','$oxy_s','$oxy_m','$doc_id')";
+    VALUES('$regno','$symptoms','$bedno','$travel','$p_status','$temp_s','$temp_m ','$bp','$bp_s','$bp_d','$oxy_s','$oxy_m','$doc_id')";
 
     if (mysqli_query($con, $sql) == true) {
 
 ?>
         <script type="text/javascript">
-            window.location = "signin.php";
+            window.location = "wards.php";
         </script>
 <?php
         echo "New record created successfully";

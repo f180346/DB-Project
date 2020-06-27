@@ -361,19 +361,22 @@ if (isset($_POST['i-ward'])) {
     $corona_test_s  = $_POST['cts'];
     $travel = $_POST['pt'];
     $doc_id = $_POST['doc-id'];
-    echo "<h1 style='color:white;'>'$symptoms','$bedno','$travel','$p_status','$temp_s','$temp_m ','$bp','$bp_s','$bp_d','$oxy_s','$oxy_m',' $breath_s',
-    '$breath_m','$heart_rate','$heart_rate_m','$cts_s','$cts_c','$xray_s','$xray_c','$wcc','$platelets_c','$corona_test_no','$corona_test_s','$doc_id'</h1>";
-    $sql = "INSERT INTO i_ward (SYMTOMS,BED_NO,T_HISTORY,P_STATUS,TEMP_STATUS,TEMP_MEASUREMENT,BP_STATUS,BP_SYSTOLIC,
+    $myfile = fopen("id.txt", "r");
+    $regno = fgets($myfile);
+    fclose($myfile);
+    // echo "<h1 style='color:white;'>'$symptoms','$bedno','$travel','$p_status','$temp_s','$temp_m ','$bp','$bp_s','$bp_d','$oxy_s','$oxy_m',' $breath_s',
+    // '$breath_m','$heart_rate','$heart_rate_m','$cts_s','$cts_c','$xray_s','$xray_c','$wcc','$platelets_c','$corona_test_no','$corona_test_s','$doc_id'</h1>";
+    $sql = "INSERT INTO i_ward (REG_NO,SYMTOMS,BED_NO,T_HISTORY,P_STATUS,TEMP_STATUS,TEMP_MEASUREMENT,BP_STATUS,BP_SYSTOLIC,
     BP_DIASTOLIC,OXY_STATUS,OXY_SAT_LEVEL,B_RATE_STATUS,B_MEASUREMENT,HR_STATUS,HR_MEASUREMENT,C_SCAN_STATUS,
     C_SCAN_CHANGES,X_RAY_STATUS,X_RAY_CHANGES,W_CELL_COUNT,PLATELETS_COUNT,CORONA_TEST_NO,CORONA_TEST_STATUS,DOC_ID) 
-    VALUES('$symptoms','$bedno','$travel','$p_status','$temp_s','$temp_m ','$bp','$bp_s','$bp_d','$oxy_s','$oxy_m',' $breath_s',
+    VALUES('$regno','$symptoms','$bedno','$travel','$p_status','$temp_s','$temp_m ','$bp','$bp_s','$bp_d','$oxy_s','$oxy_m',' $breath_s',
     '$breath_m','$heart_rate','$heart_rate_m','$cts_s','$cts_c','$xray_s','$xray_c','$wcc','$platelets_c','$corona_test_no','$corona_test_s','$doc_id')";
 
     if (mysqli_query($con, $sql) == true) {
 
 ?>
         <script type="text/javascript">
-            window.location = "signin.php";
+            window.location = "wards.php";
         </script>
 <?php
         echo "New record created successfully";

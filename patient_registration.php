@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <?php include 'links/links.php' ?>
-    <?php include 'dataconnection.php' ?>
+    <?php include 'links/links.php'?>
+    <?php include 'dataconnection.php'?>
     <link rel="stylesheet" href="style/style.css">
     <title>patient_registration</title>
 
@@ -21,7 +21,15 @@
         <br><br>
         <form action="" method="post">
             <div class="container container-fluid">
-
+            <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="p-reg" id="lb-p-reg">Registration NO</label>
+                            <input type="text" class="form-control" name="p-reg" placeholder="Enter Reg. no" pattern="[0-9]+" required>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-4">
@@ -67,10 +75,10 @@
                             <label for="p-age" id="lb-p-age">Age</label>
                             <select class="form-control" name="p-age" id="p-age" placeholder="Age">
                                 <?php
-                                for ($i = 1; $i <= 100; $i += 1) {
-                                    echo ("<option value='{$i}'>{$i}</option>");
-                                }
-                                ?>
+for ($i = 1; $i <= 100; $i += 1) {
+    echo ("<option value='{$i}'>{$i}</option>");
+}
+?>
                             </select>
                         </div>
                     </div>
@@ -116,43 +124,55 @@
 <?php
 
 if (isset($_POST['Register'])) {
-    $p_regno = $_POST['p-regno'];
-    $p_reg_date = $_POST['p-reg-date'];
+
+    $p_regno = $_POST['p-reg'];
     $p_name = $_POST['p-name'];
     $p_address = $_POST['paddress'];
     $p_city = $_POST['p-city'];
     $p_mobileno = $_POST['p-mobileno'];
-    $p_age  = $_POST['p-age'];
+    $p_age = $_POST['p-age'];
     $p_gender = $_POST['p-gender'];
     $p_ward = $_POST['p-ward'];
+    $myfile = fopen("id.txt", "w");
+    fwrite($myfile, $p_regno);
+    fclose($myfile);
 
-    // echo "<h1 style='color:white;'>'$p_regno','$p_reg_date','$p_name','$p_address','$p_city','$p_mobileno','$p_age','$p_gender','$p_ward'</h1>";
-    // $sql = "SELECT * FROM patient_record WHERE p_regno = '$p_regno'";
-    // $result = mysqli_query($con, $sql);
-    // $count  = );
-    // if (mysqli_num_rows($result)) {
-    //  echo '$p_name','$p_address','$p_city','$p_mobileno','$p_age','$p_gender','$p_ward';
-    //     $sql = "INSERT INTO patient_record (P_NAME,P_ADDRESS,P_CITY,MOB_NO,AGE,GENDER,WARD) 
-    //         VALUES('$p_name','$p_address','$p_city','$p_mobileno','$p_age','$p_gender','$p_ward')";
-    //     if (mysqli_query($con, $sql)) {
-    //         echo "New record created successfully";
-    //     } else {
-    //         echo "Error: " . $sql . "<br>" . $conn->error;
-    //     }
-    // } else {
-
-    //     $msg .= "Username Already Registered";
-    //     echo "<h1 style='color:white;'>$msg</h1>";
-    // }
-
-    // echo '$p_name','$p_address','$p_city','$p_mobileno','$p_age','$p_gender','$p_ward';
-        $sql = "INSERT INTO patient_record (REG_NO,P_NAME,P_ADDRESS,P_CITY,MOB_NO,AGE,GENDER,WARD) 
-            VALUES(0,'$p_name','$p_address','$p_city','$p_mobileno','$p_age','$p_gender','$p_ward')";
+    $sql = "SELECT * FROM `patient_record`  where REG_NO = $p_regno";
+    $result = mysqli_query($con, $sql);
+    $count = mysqli_num_rows($result);
+echo $count;
+    if ($count == 0) {
+        //  echo $p_name,'$p_address','$p_city','$p_mobileno','$p_age','$p_gender','$p_ward';
+        $sql = "INSERT INTO patient_record (REG_NO, P_NAME,P_ADDRESS,P_CITY,MOB_NO,AGE,GENDER,WARD)
+            VALUES('$p_regno','$p_name','$p_address','$p_city','$p_mobileno','$p_age','$p_gender','$p_ward')";
         if (mysqli_query($con, $sql)) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            if($p_ward == "Quarantine Ward")
+            {
+                ?>
+                <script>
+                    // alert('Heelllo');
+                     window.location.href ="quarntine.php";
+                </script>
+                 <?php
+            }
+            else
+            {
+                ?>
+                <script>
+                    // alert('Heelllo');
+                     window.location.href ="isolation.php";
+                </script>
+                 <?php
+            }
+       
         }
+       
+    } else {
+        $msg .= "Username Already Registered";
+        echo "<h1 style='color:white;'>$msg</h1>";
+
+    }
+
 }
 
 ?>
