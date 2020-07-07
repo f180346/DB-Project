@@ -127,8 +127,8 @@
   scroll-behavior: smooth;
 }
 .hp_body {
-  /* background-image: url(../images/medical.jpg); */
-  background-image: url(https://source.unsplash.com/random);
+  background-image: url(../images/medical.jpg);
+  /* background-image: url(https://source.unsplash.com/random); */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -153,6 +153,7 @@
   height: auto;
   overflow: hidden;
   margin: auto;
+
 }
 
 

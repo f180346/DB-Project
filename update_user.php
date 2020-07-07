@@ -4,7 +4,7 @@
     <?php include 'links/links.php'?>
     <link rel="stylesheet" href="style/style.css">
     <?php include 'dataconnection.php'?>
-    <title>20Updates User</title>
+    <title>Updates User</title>
 </head>
 <body id="signup-body" >
     <div class="signup_page">
@@ -75,7 +75,7 @@ echo $row['username'];?>"required>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="new_pass" id="lb-new_pass">Password</label>
-                            <input type="password" class="form-control" name="new_pass" placeholder="New Password"  value="<?php $myfile = fopen("id.txt", "r");
+                            <input type="text" class="form-control" name="new_pass" placeholder="New Password"  value="<?php $myfile = fopen("id.txt", "r");
 $id = fgets($myfile);
 fclose($myfile);
 $sql = "SELECT * FROM reg_user WHERE username='$id' AND DELETED = 0";
@@ -191,7 +191,7 @@ if (isset($_POST['update'])) {
     }
     ?>
     <script type="text/javascript">
-        window.location = "search_update_user.php";
+        window.location = "search.php";
     </script>
 <?php
 }

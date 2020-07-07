@@ -88,8 +88,6 @@ padding:0;
 
 if (isset($_POST['btn-search'])) {
     $ID = $_POST['search'];
-    echo 'bill11';
-
        if($_POST['table'] == 'User'){
         if($_POST['choice'] == 'ALL')
         {
@@ -139,6 +137,9 @@ if (isset($_POST['btn-search'])) {
 
         elseif($_POST['choice'] == 'ID')
         {
+            $myfile = fopen("id.txt", "w");
+            fwrite($myfile, $ID);
+            fclose($myfile);
             $sql = "SELECT * FROM reg_user WHERE username ='$ID' AND DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
@@ -157,6 +158,12 @@ if (isset($_POST['btn-search'])) {
                     echo "<tr><td>" . $row['fname'] . "</td><td>" . $row['lname'] . "</td><td>" . $row['username'] . "</td><td>" . $row['pass'] . "</td><td>" . $row['gender'] . "</td><td>" . $row['mobile'] . "</td><td>" . $row['email'] . "</td><td>" . $row['dob'] . "</td><td>" . $row['address'] . "</td></tr>";
                                 
                 echo "</table>";
+                echo '<form action="" method="post">';
+                echo '<div class="form-group" style="padding-top:1rem;">
+                <input type="Submit" class="btn btn-warning" id="btn-user-update" name="btn-user-update" value="Update">
+                <input type="Submit" class="btn btn-warning" id="btn-user-delete" name="btn-user-delete" value="Delete">
+            </div>';
+            echo "</form>";
             }
         }
         elseif($_POST['choice'] == 'City')
@@ -175,9 +182,9 @@ if (isset($_POST['btn-search'])) {
                       <th>Date of Birth</th>
                       <th>Address</th>
                     </tr>";
-                    $row = $result->fetch_assoc();
-                    echo "<tr><td>" . $row['fname'] . "</td><td>" . $row['lname'] . "</td><td>" . $row['username'] . "</td><td>" . $row['pass'] . "</td><td>" . $row['gender'] . "</td><td>" . $row['mobile'] . "</td><td>" . $row['email'] . "</td><td>" . $row['dob'] . "</td><td>" . $row['address'] . "</td></tr>";
-                                
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr><td>" . $row['fname'] . "</td><td>" . $row['lname'] . "</td><td>" . $row['username'] . "</td><td>" . $row['pass'] . "</td><td>" . $row['gender'] . "</td><td>" . $row['mobile'] . "</td><td>" . $row['email'] . "</td><td>" . $row['dob'] . "</td><td>" . $row['address'] . "</td></tr>";
+                    }            
                 echo "</table>";
             }
         }
@@ -224,8 +231,9 @@ if (isset($_POST['btn-search'])) {
               <th>Ward Admitted</th>
             </tr>";
             
-                $row = $result->fetch_assoc();
-                echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td></tr>";            echo "</table>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td><td>". $row['SYMTOMS'] ."</td></tr>";
+            }
         }
         }
 
@@ -248,15 +256,31 @@ if (isset($_POST['btn-search'])) {
                     $row = $result->fetch_assoc();
                     echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td></tr>";                                
                 echo "</table>";
+                
             }
         }
         elseif($_POST['choice'] == 'City')
-        {
-            $sql = "SELECT * FROM reg_user WHERE username ='$ID' AND DELETED = 0";
+        { 
+            $sql1 = "SELECT CAST((count(*) / (SELECT count(*) From patient_record) * 100) AS DECIMAL(8,2)) as percentage  from patient_record where P_CITY = '$ID' group by P_CITY";
+            $result = mysqli_query($con, $sql1);
+
+           
+            if( mysqli_query($con, $sql1))
+            {   
+                $row = $result->fetch_assoc();
+                $percentage = $row['percentage'];
+                echo $percentage;
+            }
+            else
+            {
+                echo "error";
+            }
+
+            $sql = "SELECT * FROM patient_record WHERE P_CITY = '$ID' AND DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
                 echo "<table><tr>
-                <th>Reristration no</th>
+                    <th>Reristration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
                   <th>Age</th>
@@ -266,13 +290,45 @@ if (isset($_POST['btn-search'])) {
                   <th>Patient City</th>
                   <th>Ward Admitted</th>
                 </tr>";
-                    $row = $result->fetch_assoc();
-                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td></tr>";                                
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td><td>". $row['SYMTOMS'] ."</td></tr>";
+                }
                 echo "</table>";
             }
         }
-       }
+    }
        
        
+}
+elseif(isset($_POST['btn-user-delete']))
+{
+    $myfile = fopen("id.txt", "r");
+    $id = fgets($myfile);
+    fclose($myfile);
+    $sql = "UPDATE reg_user SET DELETED = 1 where username = '$id'";
+    if (mysqli_query($con, $sql)) {
+        echo "Record Deleted successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    
+}
+elseif(isset($_POST['btn-user-update']))
+{
+    $myfile = fopen("id.txt", "r");
+    $id = fgets($myfile);
+    fclose($myfile);
+    $sql = "SELECT * FROM reg_user WHERE username = '$id' AND DELETED = 0";
+    $result = mysqli_query($con, $sql);
+    $count  = mysqli_num_rows($result);
+    if ($count != 0) {
+        ?>
+        <script>
+        
+            // alert('Heelllo');
+             window.location.href ="update_user.php";
+        </script>
+         <?php
+    }
 }
 ?>
