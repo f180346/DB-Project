@@ -36,7 +36,7 @@ CREATE TABLE `doc_record` (
   `EMAIL` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ADDRESS` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `WARD` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `DELETED` bit(2) NOT NULL DEFAULT b'0'
+  `DELETED` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -71,7 +71,7 @@ CREATE TABLE `i_ward` (
   `CORONA_TEST_NO` int NOT NULL,
   `CORONA_TEST_STATUS` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `DOC_ID` int DEFAULT NULL,
-  `DELETED` bit(2) NOT NULL DEFAULT b'0'
+  `DELETED` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -113,7 +113,7 @@ CREATE TABLE `q_ward` (
   `OXY_STATUS` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `OXY_SAT_LEVEL` int NOT NULL,
   `DOC_ID` int DEFAULT NULL,
-  `DELETED` bit(2) NOT NULL DEFAULT b'0'
+  `DELETED` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -132,22 +132,10 @@ CREATE TABLE `reg_user` (
   `mobile` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `pass` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `username` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `DELETED` bit(2) NOT NULL DEFAULT b'0'
+  `DELETED` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `temp`
---
-
-CREATE TABLE `temp` (
-  `lastid` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `doc_record`

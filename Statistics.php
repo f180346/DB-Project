@@ -5,10 +5,6 @@
     <link rel="stylesheet" href="style/style.css">
     <title>Statistics</title>
 <style>
-    #tbl
-       overflow-y:scroll;
-
-    }
     th{
         position:sticky;
         top:0;
@@ -26,7 +22,7 @@
 	<div class="table-responsive">
 		
 		<table class="table sticky table-bordered table-striped text-center" id="tbl">
-			<tr style="background-color: #aeb6bf;position:" >
+			<tr style="background-color: #aeb6bf;" >
 				<th >Country</th>
 				<th>TotalConfirmed</th>
 				<th>TotalRecovered</th>
@@ -48,32 +44,32 @@
                         var x = tbl.insertRow(i);
                         x.insertCell(0);
                         tbl.rows[i].cells[0].innerHTML = data['Countries'][i-1]['Country'];
-                        // tbl.rows[i].cells[0].style.background = '#7a4a91';
+                        tbl.rows[i].cells[0].style.background = '#1694C7';
                         tbl.rows[i].cells[0].style.color = '#000000';
 
                         x.insertCell(1);
                         tbl.rows[i].cells[1].innerHTML = data['Countries'][i-1]['TotalConfirmed'];
-                        // tbl.rows[i].cells[1].style.background = '#4bb7d8';
+                        tbl.rows[i].cells[1].style.background = '#EDCA18';
 
                         x.insertCell(2);
                         tbl.rows[i].cells[2].innerHTML = data['Countries'][i-1]['TotalRecovered'];
-                        // tbl.rows[i].cells[2].style.background = '#9cc850';
+                        tbl.rows[i].cells[2].style.background = '#0A8C37';
 
                         x.insertCell(3);
                         tbl.rows[i].cells[3].innerHTML = data['Countries'][i-1]['TotalDeaths'];
-                        // tbl.rows[i].cells[3].style.background = '#f36e23';
+                        tbl.rows[i].cells[3].style.background = '#CE4606';
 
                         x.insertCell(4);
                         tbl.rows[i].cells[4].innerHTML = data['Countries'][i-1]['NewConfirmed'];
-                        // tbl.rows[i].cells[4].style.background = '#4bb7d8';
+                        tbl.rows[i].cells[4].style.background = '#AB9009';
 
                         x.insertCell(5);
                         tbl.rows[i].cells[5].innerHTML = data['Countries'][i-1]['NewRecovered'];
-                        // tbl.rows[i].cells[5].style.background = '#9cc850';
+                        tbl.rows[i].cells[5].style.background = '#096127';
 
                         x.insertCell(6);
                         tbl.rows[i].cells[6].innerHTML = data['Countries'][i-1]['NewDeaths'];
-                        // tbl.rows[i].cells[6].style.background = '#f36e23';
+                        tbl.rows[i].cells[6].style.background = '#BA4B17';
 
                     }
                 });

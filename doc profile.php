@@ -8,6 +8,7 @@
     <title>Doctor's Profile</title>
 </head>
 
+
 <body id="patient_reg-body">
     <div class="patient_reg_page">
         <div class="reg">
@@ -138,10 +139,10 @@ if (isset($_POST['doc_register'])) {
     $count  = mysqli_num_rows($result);
     if ($count == 0) {
 
-        $sql = "INSERT INTO doc_record ( D_NAME,AGE,GENDER,MOB_NO,EMAIL,ADDRESS,WARD) 
-            VALUES('$D_NAME','$AGE','$GENDER','$MOB_NO','$EMAIL','$ADDRESS','$WARD')";
+        $sql = "INSERT INTO doc_record (D_ID, D_NAME,AGE,GENDER,MOB_NO,EMAIL,ADDRESS,WARD) 
+            VALUES('$D_ID','$D_NAME','$AGE','$GENDER','$MOB_NO','$EMAIL','$ADDRESS','$WARD')";
         if (mysqli_query($con, $sql)) {
-            
+
 ?>
             <script type="text/javascript">
                 window.location = "signin.php";

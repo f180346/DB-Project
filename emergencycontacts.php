@@ -18,7 +18,7 @@
         </div>
         <br><br>
         <form action="" method="post">
- <h1 for="p-address" id="lb-p-address"><center>EMERGENCY NUMBERS </center></h1>
+ <h1 for="p-address" id="lb-p"><center>EMERGENCY NUMBERS </center></h1>
             <div class="container container-fluid">
                 <!------------------------------------->
                 <div class="row">
