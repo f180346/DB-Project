@@ -380,7 +380,7 @@ if (isset($_POST['btn-search'])) {
 }
     elseif ($_POST['table'] == 'Isolation') {
         if ($_POST['choice'] == 'ALL') {
-            echo "LOL";
+            
             $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO inner join doc_record on i_ward.DOC_ID = doc_record.D_ID AND patient_record.DELETED = 0 AND i_ward.DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
@@ -388,7 +388,9 @@ if (isset($_POST['btn-search'])) {
                 <th>Reristration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
-                  <th>SYMTOMS</th>
+                  <th>Symptoms</th>
+                  <th>Patient Status</th>
+                  <th>Bed no</th>
                   <th>Patient Status</th>
                   <th>Temp. Condition</th>
                   <th>Temp. Measurement</th>
@@ -412,19 +414,21 @@ if (isset($_POST['btn-search'])) {
                   <th>Doctor</th>
                 </tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>" . $row['BED_NO'] . "</td><td>" . $row['T_HISTORY'] . "</td><td>" . $row['P_STATUS'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] ."</td><td>" . $row['BP_SYSTOLIC'] ."</td><td>" . $row['BP_DIASTOLIC'] ."</td><td>" . $row['OXY_STATUS'] ."</td><td>" . $row['OXY_SAT_LEVEL'] ."</td><td>" . $row['B_RATE_STATUS'] ."</td><td>" . $row['B_MEASURENT'] ."</td><td>" . $row['C_SCAN_STATUS'] ."</td><td>" . $row['C_SCAN_CHANGES'] ."</td><td>" . $row['X_RAY_STATUS'] ."</td><td>" . $row['X_RAY_CHANGES'] ."</td><td>" . $row['W_CELL_COUNT'] ."</td><td>" . $row['PLATEETS_COUNT'] . "</td><td>" . $row['CORONA_TEST_NO'] ."</td><td>" . $row['CORONA_TEST_STSTUS'] ."</td><td>" . $row['D_NAME'] ."</td></tr>";
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>". $row['P_STATUS'] . "</td><td>"  . $row['BED_NO'] . "</td><td>" . $row['T_HISTORY'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] ."</td><td>" . $row['BP_SYSTOLIC'] ."</td><td>" . $row['BP_DIASTOLIC'] ."</td><td>" . $row['OXY_STATUS'] ."</td><td>" . $row['OXY_SAT_LEVEL'] ."</td><td>" . $row['B_RATE_STATUS'] ."</td><td>" . $row['B_MEASUREMENT'] ."</td><td>" . $row['HR_STATUS'] ."</td><td>" . $row['HR_MEASUREMENT']."</td><td>" . $row['C_SCAN_STATUS'] ."</td><td>" . $row['C_SCAN_CHANGES'] ."</td><td>" . $row['X_RAY_STATUS'] ."</td><td>" . $row['X_RAY_CHANGES'] ."</td><td>" . $row['W_CELL_COUNT'] ."</td><td>" . $row['PLATELETS_COUNT'] . "</td><td>" . $row['CORONA_TEST_NO'] ."</td><td>" . $row['CORONA_TEST_STATUS'] ."</td><td>" . $row['D_NAME'] ."</td></tr>";
                 }
                 echo "</table>";
             }
         } elseif ($_POST['choice'] == 'Name') {
-            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO AND patient_record.P_NAME like'$ID%'AND patient_record.DELETED = 0 AND i_ward.DELETED = 0";
+            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO inner join doc_record on i_ward.DOC_ID = doc_record.D_ID AND patient_record.DELETED = 0 AND i_ward.DELETED = 0 And P_NAME like '$ID%'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
                 echo "<table><tr>
                 <th>Reristration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
-                  <th>SYMTOMS</th>
+                  <th>Symptoms</th>
+                  <th>Patient Status</th>
+                  <th>Bed no</th>
                   <th>Patient Status</th>
                   <th>Temp. Condition</th>
                   <th>Temp. Measurement</th>
@@ -448,7 +452,7 @@ if (isset($_POST['btn-search'])) {
                   <th>Doctor</th>
                 </tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>" . $row['BED_NO'] . "</td><td>" . $row['T_HISTORY'] . "</td><td>" . $row['P_STATUS'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] ."</td><td>" . $row['BP_SYSTOLIC'] ."</td><td>" . $row['BP_DIASTOLIC'] ."</td><td>" . $row['OXY_STATUS'] ."</td><td>" . $row['OXY_SAT_LEVEL'] ."</td><td>" . $row['B_RATE_STATUS'] ."</td><td>" . $row['B_MEASURMENT'] ."</td><td>" . $row['C_SCAN_STATUS'] ."</td><td>" . $row['C_SCAN_CHANGES'] ."</td><td>" . $row['X_RAY_STATUS'] ."</td><td>" . $row['X_RAY_CHANGES'] ."</td><td>" . $row['W_CELL_COUNT'] ."</td><td>" . $row['PLATELETS_COUNT'] . "</td><td>" . $row['CORONA_TEST_NO'] ."</td><td>" . $row['CORONA_TEST_STATUS'] ."</td><td>" . $row['D_NAME'] ."</td></tr>";
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>". $row['P_STATUS'] . "</td><td>"  . $row['BED_NO'] . "</td><td>" . $row['T_HISTORY'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] ."</td><td>" . $row['BP_SYSTOLIC'] ."</td><td>" . $row['BP_DIASTOLIC'] ."</td><td>" . $row['OXY_STATUS'] ."</td><td>" . $row['OXY_SAT_LEVEL'] ."</td><td>" . $row['B_RATE_STATUS'] ."</td><td>" . $row['B_MEASUREMENT'] ."</td><td>" . $row['HR_STATUS'] ."</td><td>" . $row['HR_MEASUREMENT']."</td><td>" . $row['C_SCAN_STATUS'] ."</td><td>" . $row['C_SCAN_CHANGES'] ."</td><td>" . $row['X_RAY_STATUS'] ."</td><td>" . $row['X_RAY_CHANGES'] ."</td><td>" . $row['W_CELL_COUNT'] ."</td><td>" . $row['PLATELETS_COUNT'] . "</td><td>" . $row['CORONA_TEST_NO'] ."</td><td>" . $row['CORONA_TEST_STATUS'] ."</td><td>" . $row['D_NAME'] ."</td></tr>";
                 }
                 echo "</table>";
             }
@@ -456,14 +460,16 @@ if (isset($_POST['btn-search'])) {
             $myfile = fopen("id.txt", "w");
             fwrite($myfile, $ID);
             fclose($myfile);
-            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO AND i_ward.REG_NO ='$ID' And patient_record.DELETED = 0 AND i_ward.DELETED = 0";
+            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO inner join doc_record on i_ward.DOC_ID = doc_record.D_ID AND patient_record.DELETED = 0 AND i_ward.DELETED = 0 And REG_NO = '$ID'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
                 echo "<table><tr>
                 <th>Reristration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
-                  <th>SYMTOMS</th>
+                  <th>Symptoms</th>
+                  <th>Patient Status</th>
+                  <th>Bed no</th>
                   <th>Patient Status</th>
                   <th>Temp. Condition</th>
                   <th>Temp. Measurement</th>
@@ -486,9 +492,10 @@ if (isset($_POST['btn-search'])) {
                   <th>Corona Test Status</th>
                   <th>Doctor</th>
                 </tr>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>" . $row['BED_NO'] . "</td><td>" . $row['T_HISTORY'] . "</td><td>" . $row['P_STATUS'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] ."</td><td>" . $row['BP_SYSTOLIC'] ."</td><td>" . $row['BP_DIASTOLIC'] ."</td><td>" . $row['OXY_STATUS'] ."</td><td>" . $row['OXY_SAT_LEVEL'] ."</td><td>" . $row['B_RATE_STATUS'] ."</td><td>" . $row['B_MEASURENT'] ."</td><td>" . $row['C_SCAN_STATUS'] ."</td><td>" . $row['C_SCAN_CHANGES'] ."</td><td>" . $row['X_RAY_STATUS'] ."</td><td>" . $row['X_RAY_CHANGES'] ."</td><td>" . $row['W_CELL_COUNT'] ."</td><td>" . $row['PLATEETS_COUNT'] . "</td><td>" . $row['CORONA_TEST_NO'] ."</td><td>" . $row['CORONA_TEST_STSTUS'] ."</td><td>" . $row['D_NAME'] ."</td></tr>";
-                }
+                $row = $result->fetch_assoc();
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>". $row['P_STATUS'] . "</td><td>"  . $row['BED_NO'] . "</td><td>" . $row['T_HISTORY'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] ."</td><td>" . $row['BP_SYSTOLIC'] ."</td><td>" . $row['BP_DIASTOLIC'] ."</td><td>" . $row['OXY_STATUS'] ."</td><td>" . $row['OXY_SAT_LEVEL'] ."</td><td>" . $row['B_RATE_STATUS'] ."</td><td>" . $row['B_MEASUREMENT'] ."</td><td>" . $row['HR_STATUS'] ."</td><td>" . $row['HR_MEASUREMENT']."</td><td>" . $row['C_SCAN_STATUS'] ."</td><td>" . $row['C_SCAN_CHANGES'] ."</td><td>" . $row['X_RAY_STATUS'] ."</td><td>" . $row['X_RAY_CHANGES'] ."</td><td>" . $row['W_CELL_COUNT'] ."</td><td>" . $row['PLATELETS_COUNT'] . "</td><td>" . $row['CORONA_TEST_NO'] ."</td><td>" . $row['CORONA_TEST_STATUS'] ."</td><td>" . $row['D_NAME'] ."</td></tr>";
+                
+                
                 echo "</table>";
                 echo '<form action="" method="post">';
                 echo '<div class="form-group" style="padding-top:1rem;">
@@ -498,7 +505,7 @@ if (isset($_POST['btn-search'])) {
                 echo "</form>";
             }
         } elseif ($_POST['choice'] == 'City') {
-            $sql1 = "SELECT CAST((count(*) / (SELECT count(*) From patient_record) * 100) AS DECIMAL(8,2)) as percentage  from patient_record where P_CITY = '$ID' group by P_CITY";
+            $sql1 = "SELECT CAST((count(*) / (SELECT count(*) From patient_record where WARD = 'Isolation Ward') * 100) AS DECIMAL(8,2)) as percentage  from patient_record where P_CITY = '$ID' AND WARD = 'Isolation Ward' group by P_CITY";
             $result = mysqli_query($con, $sql1);
 
 
@@ -510,14 +517,16 @@ if (isset($_POST['btn-search'])) {
                 echo "error";
             }
 
-            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO AND patient_record.DELETED = 0 AND i_ward.DELETED = 0";
+            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO inner join doc_record on i_ward.DOC_ID = doc_record.D_ID AND patient_record.DELETED = 0 AND i_ward.DELETED = 0 And P_CITY = '$ID'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
                 echo "<table><tr>
                 <th>Reristration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
-                  <th>SYMTOMS</th>
+                  <th>Symptoms</th>
+                  <th>Patient Status</th>
+                  <th>Bed no</th>
                   <th>Patient Status</th>
                   <th>Temp. Condition</th>
                   <th>Temp. Measurement</th>
@@ -541,7 +550,7 @@ if (isset($_POST['btn-search'])) {
                   <th>Doctor</th>
                 </tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>" . $row['BED_NO'] . "</td><td>" . $row['T_HISTORY'] . "</td><td>" . $row['P_STATUS'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] ."</td><td>" . $row['BP_SYSTOLIC'] ."</td><td>" . $row['BP_DIASTOLIC'] ."</td><td>" . $row['OXY_STATUS'] ."</td><td>" . $row['OXY_SAT_LEVEL'] ."</td><td>" . $row['B_RATE_STATUS'] ."</td><td>" . $row['B_MEASURENT'] ."</td><td>" . $row['C_SCAN_STATUS'] ."</td><td>" . $row['C_SCAN_CHANGES'] ."</td><td>" . $row['X_RAY_STATUS'] ."</td><td>" . $row['X_RAY_CHANGES'] ."</td><td>" . $row['W_CELL_COUNT'] ."</td><td>" . $row['PLATEETS_COUNT'] . "</td><td>" . $row['CORONA_TEST_NO'] ."</td><td>" . $row['CORONA_TEST_STSTUS'] ."</td><td>" . $row['D_NAME'] ."</td></tr>";
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>". $row['P_STATUS'] . "</td><td>"  . $row['BED_NO'] . "</td><td>" . $row['T_HISTORY'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] ."</td><td>" . $row['BP_SYSTOLIC'] ."</td><td>" . $row['BP_DIASTOLIC'] ."</td><td>" . $row['OXY_STATUS'] ."</td><td>" . $row['OXY_SAT_LEVEL'] ."</td><td>" . $row['B_RATE_STATUS'] ."</td><td>" . $row['B_MEASUREMENT'] ."</td><td>" . $row['HR_STATUS'] ."</td><td>" . $row['HR_MEASUREMENT']."</td><td>" . $row['C_SCAN_STATUS'] ."</td><td>" . $row['C_SCAN_CHANGES'] ."</td><td>" . $row['X_RAY_STATUS'] ."</td><td>" . $row['X_RAY_CHANGES'] ."</td><td>" . $row['W_CELL_COUNT'] ."</td><td>" . $row['PLATELETS_COUNT'] . "</td><td>" . $row['CORONA_TEST_NO'] ."</td><td>" . $row['CORONA_TEST_STATUS'] ."</td><td>" . $row['D_NAME'] ."</td></tr>";
                 }
                 echo "</table>";
             }
