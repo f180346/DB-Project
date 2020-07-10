@@ -46,7 +46,7 @@
 
                     <div class="form-group">
                         <label for="symptoms" id="lb-p-reg">Symtoms</label>
-                        <input type="text" class="form-control" name="symptoms" placeholder="Registration No" required>
+                        <input type="text" class="form-control" name="symptoms" placeholder="Symptoms" required>
                     </div>
                 </div>
             </div>
@@ -314,7 +314,7 @@
         <div class="col-sm-3">
             <div class="form-group">
                 <label for="p-regno" id="lb-p-reg">Doctor's ID</label>
-                <input type="text" class="form-control" name="doc-id" placeholder="Doctor ID" required>
+                <input type="text" class="form-control" name="doc-id" placeholder="Doctor ID" pattern="[0-9]+"required>
             </div>
         </div>
 

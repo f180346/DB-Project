@@ -150,7 +150,7 @@ echo $count;
             {
                 ?>
                 <script>
-                    // alert('Heelllo');
+                   
                      window.location.href ="quarntine.php";
                 </script>
                  <?php
@@ -159,7 +159,7 @@ echo $count;
             {
                 ?>
                 <script>
-                    // alert('Heelllo');
+                    
                      window.location.href ="isolation.php";
                 </script>
                  <?php

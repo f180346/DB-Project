@@ -126,13 +126,13 @@
 * {
   scroll-behavior: smooth;
 }
-.hp_body {
+/* .hp_body {
   background-image: url(../images/medical.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 
 .hp{
   max-width: 100%;
@@ -156,4 +156,13 @@
 
 #lb-p{
   color: red;
+}
+.carousel-item
+{
+	height: 60vh;
+	min-height: 300px;
+	background: no-repeat center center scroll ;
+	-webkit-background-size:cover;
+
+
 }

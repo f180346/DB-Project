@@ -4,13 +4,6 @@
 <?php include 'links/links.php'; ?>
     <link rel="stylesheet" href="style/style.css">
     <title>Statistics</title>
-<style>
-    th{
-        position:sticky;
-        top:0;
-    }
-</style>
-
 </head>
 <body onload="fetch()">
 
@@ -37,7 +30,7 @@
            function fetch() {
             $.get("https://api.covid19api.com/summary",
                 function (data) {
-                    console.log(data['Countries'].length)  //total countries
+                    console.log(data['Countries'].length)  
                     var tbl = document.getElementById('tbl');
                     for(var i=1;i<(data['Countries'].length);i++)
                     {

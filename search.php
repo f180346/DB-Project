@@ -94,7 +94,7 @@ if (isset($_POST['btn-search'])) {
             $sql = "SELECT * FROM reg_user WHERE DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
                 <th>First Name</th>
                   <th>Last Name</th>
                   <th>Username</th>
@@ -114,7 +114,7 @@ if (isset($_POST['btn-search'])) {
             $sql = "SELECT * FROM reg_user WHERE fname ='$ID' AND DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
                 <th>First Name</th>
                   <th>Last Name</th>
                   <th>Username</th>
@@ -137,7 +137,7 @@ if (isset($_POST['btn-search'])) {
             $sql = "SELECT * FROM reg_user WHERE username ='$ID' AND DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
                     <th>First Name</th>
                       <th>Last Name</th>
                       <th>Username</th>
@@ -159,34 +159,14 @@ if (isset($_POST['btn-search'])) {
             </div>';
                 echo "</form>";
             }
-        } elseif ($_POST['choice'] == 'City') {
-            $sql = "SELECT * FROM reg_user WHERE username ='$ID' AND DELETED = 0";
-            $result = mysqli_query($con, $sql);
-            if ($result->num_rows > 0) {
-                echo "<table><tr>
-                    <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Username</th>
-                      <th>Password</th>
-                      <th>Gender</th>
-                      <th>Mobile</th>
-                      <th>Email</th>
-                      <th>Date of Birth</th>
-                      <th>Address</th>
-                    </tr>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['fname'] . "</td><td>" . $row['lname'] . "</td><td>" . $row['username'] . "</td><td>" . $row['pass'] . "</td><td>" . $row['gender'] . "</td><td>" . $row['mobile'] . "</td><td>" . $row['email'] . "</td><td>" . $row['dob'] . "</td><td>" . $row['address'] . "</td></tr>";
-                }
-                echo "</table>";
-            }
-        }
+        } 
     } elseif ($_POST['table'] == 'Paient') {
         if ($_POST['choice'] == 'ALL') {
             $sql = "SELECT * FROM patient_record where DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
                   <th>Age</th>
@@ -202,11 +182,11 @@ if (isset($_POST['btn-search'])) {
                 echo "</table>";
             }
         } elseif ($_POST['choice'] == 'Name') {
-            $sql = "SELECT * FROM patient_record WHERE fname ='$ID%' AND DELETED = 0";
+            $sql = "SELECT * FROM patient_record WHERE P_NAME like '$ID%' AND DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-            <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+            <th>Registration no</th>
               <th>Registration Date</th>
               <th>Patient Name</th>
               <th>Age</th>
@@ -225,11 +205,11 @@ if (isset($_POST['btn-search'])) {
             $myfile = fopen("id.txt", "w");
             fwrite($myfile, $ID);
             fclose($myfile);
-            $sql = "SELECT * FROM patient_record WHERE username ='$ID' AND DELETED = 0";
+            $sql = "SELECT * FROM patient_record WHERE REG_NO ='$ID' AND DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
                   <th>Age</th>
@@ -265,8 +245,8 @@ if (isset($_POST['btn-search'])) {
             $sql = "SELECT * FROM patient_record WHERE P_CITY = '$ID' AND DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                  <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                  <th>Registration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
                   <th>Age</th>
@@ -277,7 +257,7 @@ if (isset($_POST['btn-search'])) {
                   <th>Ward Admitted</th>
                 </tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td><td>" . $row['SYMTOMS'] . "</td></tr>";
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] .  "</td></tr>";
                 }
                 echo "</table>";
             }
@@ -288,7 +268,7 @@ if (isset($_POST['btn-search'])) {
             $sql = "SELECT * FROM doc_record where DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
                 <th>Doctor ID</th>
                   <th>Doctor Name</th>
                   <th>Age</th>
@@ -296,19 +276,18 @@ if (isset($_POST['btn-search'])) {
                   <th>Mobile no</th>
                   <th>Email address</th>
                   <th>Address</th>
-                  <th>City</th>
                   <th>Ward Duty</th>
                   
                 </tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['D_ID'] . "</td><td>" . $row['D_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['EMAIL'] . "</td><td>" . $row['ADDRESS'] . "</td><td>" . $row['city'] . "</td><td>" . $row['WARD']  . "</td></tr>";
+                    echo "<tr><td>" . $row['D_ID'] . "</td><td>" . $row['D_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['EMAIL'] . "</td><td>" . $row['ADDRESS'] . "</td><td>"  . $row['WARD']  . "</td></tr>";
                 }
                 echo "</table>";
             }
         } elseif ($_POST['choice'] == 'Name') {
             $sql = "SELECT * FROM doc_record where D_NAME like'$ID%' AND DELETED = 0";            $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
                 <th>Doctor ID</th>
                   <th>Doctor Name</th>
                   <th>Age</th>
@@ -316,12 +295,11 @@ if (isset($_POST['btn-search'])) {
                   <th>Mobile no</th>
                   <th>Email address</th>
                   <th>Address</th>
-                  <th>City</th>
                   <th>Ward Duty</th>
                   
                 </tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['D_ID'] . "</td><td>" . $row['D_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['EMAIL'] . "</td><td>" . $row['ADDRESS'] . "</td><td>" . $row['city'] . "</td><td>" . $row['WARD']  . "</td></tr>";
+                    echo "<tr><td>" . $row['D_ID'] . "</td><td>" . $row['D_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['EMAIL'] . "</td><td>" . $row['ADDRESS'] . "</td><td>"  . $row['WARD']  . "</td></tr>";
                 }
                 echo "</table>";
             }
@@ -329,10 +307,10 @@ if (isset($_POST['btn-search'])) {
             $myfile = fopen("id.txt", "w");
             fwrite($myfile, $ID);
             fclose($myfile);
-            $sql = "SELECT * FROM doc_record  where D_ID= '$ID' AND DELETED = 0";
+            $sql = "SELECT * FROM doc_record  where D_ID = '$ID' AND DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
                 <th>Doctor ID</th>
                   <th>Doctor Name</th>
                   <th>Age</th>
@@ -340,12 +318,11 @@ if (isset($_POST['btn-search'])) {
                   <th>Mobile no</th>
                   <th>Email address</th>
                   <th>Address</th>
-                  <th>City</th>
                   <th>Ward Duty</th>
                   
                 </tr>";
-                
-                    echo "<tr><td>" . $row['D_ID'] . "</td><td>" . $row['D_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['EMAIL'] . "</td><td>" . $row['ADDRESS'] . "</td><td>" . $row['city'] . "</td><td>" . $row['WARD']  . "</td></tr>";
+                $row = $result->fetch_assoc();
+                    echo "<tr><td>" . $row['D_ID'] . "</td><td>" . $row['D_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['EMAIL'] . "</td><td>" . $row['ADDRESS'] . "</td><td>" . $row['WARD']  . "</td></tr>";
                 
                 echo "</table>";
                 echo '<form action="" method="post">';
@@ -355,28 +332,7 @@ if (isset($_POST['btn-search'])) {
             </div>';
                 echo "</form>";
             }
-        } elseif ($_POST['choice'] == 'City') {
-            $sql = "SELECT * FROM doc_record  where city= '$ID' AND DELETED = 0";
-            $result = mysqli_query($con, $sql);
-            if ($result->num_rows > 0) {
-                echo "<table><tr>
-                <th>Doctor ID</th>
-                  <th>Doctor Name</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Mobile no</th>
-                  <th>Email address</th>
-                  <th>Address</th>
-                  <th>City</th>
-                  <th>Ward Duty</th>
-                  
-                </tr>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['D_ID'] . "</td><td>" . $row['D_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['EMAIL'] . "</td><td>" . $row['ADDRESS'] . "</td><td>" . $row['city'] . "</td><td>" . $row['WARD']  . "</td></tr>";
-                }
-                echo "</table>";
-            }
-    }
+        } 
 }
     elseif ($_POST['table'] == 'Isolation') {
         if ($_POST['choice'] == 'ALL') {
@@ -384,8 +340,8 @@ if (isset($_POST['btn-search'])) {
             $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO inner join doc_record on i_ward.DOC_ID = doc_record.D_ID AND patient_record.DELETED = 0 AND i_ward.DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
                   <th>Symptoms</th>
@@ -422,8 +378,8 @@ if (isset($_POST['btn-search'])) {
             $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO inner join doc_record on i_ward.DOC_ID = doc_record.D_ID AND patient_record.DELETED = 0 AND i_ward.DELETED = 0 And P_NAME like '$ID%'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
                   <th>Symptoms</th>
@@ -460,11 +416,11 @@ if (isset($_POST['btn-search'])) {
             $myfile = fopen("id.txt", "w");
             fwrite($myfile, $ID);
             fclose($myfile);
-            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO inner join doc_record on i_ward.DOC_ID = doc_record.D_ID AND patient_record.DELETED = 0 AND i_ward.DELETED = 0 And REG_NO = '$ID'";
+            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO inner join doc_record on i_ward.DOC_ID = doc_record.D_ID AND patient_record.DELETED = 0 AND i_ward.DELETED = 0 And i_ward.REG_NO = '$ID'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
                   <th>Symptoms</th>
@@ -520,8 +476,8 @@ if (isset($_POST['btn-search'])) {
             $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO inner join doc_record on i_ward.DOC_ID = doc_record.D_ID AND patient_record.DELETED = 0 AND i_ward.DELETED = 0 And P_CITY = '$ID'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
                   <th>Symptoms</th>
@@ -556,68 +512,86 @@ if (isset($_POST['btn-search'])) {
             }
         }
     }
-    elseif ($_POST['table'] == 'Paient') {
+    elseif ($_POST['table'] == 'Quarantine') {
+       
         if ($_POST['choice'] == 'ALL') {
-            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO AND patient_record.DELETED = 0 AND i_ward.DELETED = 0";
+            $sql = "SELECT * FROM q_ward INNER JOIN patient_record on patient_record.REG_NO = q_ward.REG_NO AND patient_record.DELETED = 0 AND q_ward.DELETED = 0";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Mobile no</th>
-                  <th>Patient Address</th>
-                  <th>Patient City</th>
-                  <th>Ward Admitted</th>
-                  <th>SYMTOMS</th>
+                  <th>Symptoms</th>
+                  <th>Patient Status</th>
+                  <th>Bed no</th>
+                  <th>Patient Status</th>
+                  <th>Temp. Condition</th>
+                  <th>Temp. Measurement</th>
+                  <th>BP Condition</th>
+                  <th>BP Systolic</th>
+                  <th>BP Diastolic</th>
+                  <th>Oxygen Condition</th>
+                  <th>Oxy. Sat. Level</th>
+                  <th>Doctor</th>
                 </tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td><td>" . $row['SYMTOMS'] . "</td></tr>";
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>" . $row['P_STATUS'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] . "</td><td>" . $row['BP_SYSTOLIC'] . "</td><td>" . $row['BP_DIASTOLIC'] . "</td><td>" . $row['OXY_STATUS']. "</td><td>" . $row['OXY_SAT_LEVEL']. "</td><td>" . $row['DOC_ID']. "</td></tr>";
                 }
                 echo "</table>";
             }
         } elseif ($_POST['choice'] == 'Name') {
-            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO AND patient_record.DELETED = 0 AND i_ward.DELETED = 0";
+            $sql = "SELECT * FROM q_ward INNER JOIN patient_record on patient_record.REG_NO = q_ward.REG_NO AND patient_record.DELETED = 0 AND q_ward.DELETED = 0 and patient_record.P_NAME like '$ID%'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-            <th>Reristration no</th>
-              <th>Registration Date</th>
-              <th>Patient Name</th>
-              <th>Age</th>
-              <th>Gender</th>
-              <th>Mobile no</th>
-              <th>Patient Address</th>
-              <th>Patient City</th>
-              <th>Ward Admitted</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
+                <th>Registration Date</th>
+                <th>Patient Name</th>
+                <th>Symptoms</th>
+                <th>Patient Status</th>
+                <th>Bed no</th>
+                <th>Patient Status</th>
+                <th>Temp. Condition</th>
+                <th>Temp. Measurement</th>
+                <th>BP Condition</th>
+                <th>BP Systolic</th>
+                <th>BP Diastolic</th>
+                <th>Oxygen Condition</th>
+                <th>Oxy. Sat. Level</th>
+                <th>Doctor</th>
             </tr>";
 
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td><td>" . $row['SYMTOMS'] . "</td></tr>";
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>" . $row['P_STATUS'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] . "</td><td>" . $row['BP_SYSTOLIC'] . "</td><td>" . $row['BP_DIASTOLIC'] . "</td><td>" . $row['OXY_STATUS']. "</td><td>" . $row['OXY_SAT_LEVEL']. "</td><td>" . $row['DOC_ID']. "</td></tr>";
                 }
             }
         } elseif ($_POST['choice'] == 'ID') {
             $myfile = fopen("id.txt", "w");
             fwrite($myfile, $ID);
             fclose($myfile);
-            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO AND patient_record.DELETED = 0 AND i_ward.DELETED = 0";
+            $sql = "SELECT * FROM q_ward INNER JOIN patient_record on patient_record.REG_NO = q_ward.REG_NO AND patient_record.DELETED = 0 AND q_ward.DELETED = 0 and  q_ward.REG_NO = '$ID'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                <th>Reristration no</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
                   <th>Registration Date</th>
                   <th>Patient Name</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Mobile no</th>
-                  <th>Patient Address</th>
-                  <th>Patient City</th>
-                  <th>Ward Admitted</th>
+                  <th>Symptoms</th>
+                  <th>Patient Status</th>
+                  <th>Bed no</th>
+                  <th>Patient Status</th>
+                  <th>Temp. Condition</th>
+                  <th>Temp. Measurement</th>
+                  <th>BP Condition</th>
+                  <th>BP Systolic</th>
+                  <th>BP Diastolic</th>
+                  <th>Oxygen Condition</th>
+                  <th>Oxy. Sat. Level</th>
+                  <th>Doctor</th>
                 </tr>";
                 $row = $result->fetch_assoc();
-                echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td></tr>";
+                echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>" . $row['P_STATUS'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] . "</td><td>" . $row['BP_SYSTOLIC'] . "</td><td>" . $row['BP_DIASTOLIC'] . "</td><td>" . $row['OXY_STATUS']. "</td><td>" . $row['OXY_SAT_LEVEL']. "</td><td>" . $row['DOC_ID']. "</td></tr>";
                 echo "</table>";
                 echo '<form action="" method="post">';
                 echo '<div class="form-group" style="padding-top:1rem;">
@@ -627,7 +601,7 @@ if (isset($_POST['btn-search'])) {
                 echo "</form>";
             }
         } elseif ($_POST['choice'] == 'City') {
-            $sql1 = "SELECT CAST((count(*) / (SELECT count(*) From patient_record) * 100) AS DECIMAL(8,2)) as percentage  from patient_record where P_CITY = '$ID' group by P_CITY";
+            $sql1 = "SELECT CAST((count(*) / (SELECT count(*) From patient_record where WARD = 'Quarantine Ward') * 100) AS DECIMAL(8,2)) as percentage  from patient_record where P_CITY = '$ID' AND WARD = 'Quarantine Ward' group by P_CITY";
             $result = mysqli_query($con, $sql1);
 
 
@@ -639,22 +613,28 @@ if (isset($_POST['btn-search'])) {
                 echo "error";
             }
 
-            $sql = "SELECT * FROM i_ward INNER JOIN patient_record on patient_record.REG_NO = i_ward.REG_NO AND patient_record.DELETED = 0 AND i_ward.DELETED = 0";
+            $sql = "SELECT * FROM q_ward INNER JOIN patient_record on patient_record.REG_NO = q_ward.REG_NO AND patient_record.DELETED = 0 AND q_ward.DELETED = 0 and patient_record.P_CITY = '$ID'";
             $result = mysqli_query($con, $sql);
             if ($result->num_rows > 0) {
-                echo "<table><tr>
-                  <th>Reristration no</th>
-                  <th>Registration Date</th>
-                  <th>Patient Name</th>
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Mobile no</th>
-                  <th>Patient Address</th>
-                  <th>Patient City</th>
-                  <th>Ward Admitted</th>
+                echo "<table  class='table sticky table-bordered table-striped text-center'><tr>
+                <th>Registration no</th>
+                <th>Registration Date</th>
+                <th>Patient Name</th>
+                <th>Symptoms</th>
+                <th>Patient Status</th>
+                <th>Bed no</th>
+                <th>Patient Status</th>
+                <th>Temp. Condition</th>
+                <th>Temp. Measurement</th>
+                <th>BP Condition</th>
+                <th>BP Systolic</th>
+                <th>BP Diastolic</th>
+                <th>Oxygen Condition</th>
+                <th>Oxy. Sat. Level</th>
+                <th>Doctor</th>
                 </tr>";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['AGE'] . "</td><td>" . $row['GENDER'] . "</td><td>" . $row['MOB_NO'] . "</td><td>" . $row['P_ADDRESS'] . "</td><td>" . $row['P_CITY'] . "</td><td>" . $row['WARD'] . "</td><td>" . $row['SYMTOMS'] . "</td></tr>";
+                    echo "<tr><td>" . $row['REG_NO'] . "</td><td>" . $row['REG_DATE'] . "</td><td>" . $row['P_NAME'] . "</td><td>" . $row['SYMTOMS'] . "</td><td>" . $row['P_STATUS'] . "</td><td>" . $row['TEMP_STATUS'] . "</td><td>" . $row['TEMP_MEASUREMENT'] . "</td><td>" . $row['BP_STATUS'] . "</td><td>" . $row['BP_SYSTOLIC'] . "</td><td>" . $row['BP_DIASTOLIC'] . "</td><td>" . $row['OXY_STATUS']. "</td><td>" . $row['OXY_SAT_LEVEL']. "</td><td>" . $row['DOC_ID']. "</td></tr>";
                 }
                 echo "</table>";
             }
@@ -687,99 +667,27 @@ elseif (isset($_POST['btn-user-delete'])) {
 <?php
     }
 }
-elseif (isset($_POST['btn-user-delete'])) {
+elseif (isset($_POST['btn-doc-delete'])) {
     $myfile = fopen("id.txt", "r");
     $id = fgets($myfile);
     fclose($myfile);
-    $sql = "UPDATE reg_user SET DELETED = 1 where username = '$id'";
+    $sql = "UPDATE doc_record SET DELETED = 1 where D_ID = '$id'";
     if (mysqli_query($con, $sql)) {
         echo "Record Deleted successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-} elseif (isset($_POST['btn-user-update'])) {
+} elseif (isset($_POST['btn-doc-update'])) {
     $myfile = fopen("id.txt", "r");
     $id = fgets($myfile);
     fclose($myfile);
-    $sql = "SELECT * FROM reg_user WHERE username = '$id' AND DELETED = 0";
+    $sql = "SELECT * FROM doc_record WHERE  D_ID = '$id' AND DELETED = 0";
     $result = mysqli_query($con, $sql);
     $count  = mysqli_num_rows($result);
     if ($count != 0) {
 ?>
         <script>
-            window.location.href = "update_user.php";
-        </script>
-<?php
-    }
-}elseif (isset($_POST['btn-user-delete'])) {
-    $myfile = fopen("id.txt", "r");
-    $id = fgets($myfile);
-    fclose($myfile);
-    $sql = "UPDATE reg_user SET DELETED = 1 where username = '$id'";
-    if (mysqli_query($con, $sql)) {
-        echo "Record Deleted successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-} elseif (isset($_POST['btn-user-update'])) {
-    $myfile = fopen("id.txt", "r");
-    $id = fgets($myfile);
-    fclose($myfile);
-    $sql = "SELECT * FROM reg_user WHERE username = '$id' AND DELETED = 0";
-    $result = mysqli_query($con, $sql);
-    $count  = mysqli_num_rows($result);
-    if ($count != 0) {
-?>
-        <script>
-            window.location.href = "update_user.php";
-        </script>
-<?php
-    }
-}elseif (isset($_POST['btn-user-delete'])) {
-    $myfile = fopen("id.txt", "r");
-    $id = fgets($myfile);
-    fclose($myfile);
-    $sql = "UPDATE reg_user SET DELETED = 1 where username = '$id'";
-    if (mysqli_query($con, $sql)) {
-        echo "Record Deleted successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-} elseif (isset($_POST['btn-user-update'])) {
-    $myfile = fopen("id.txt", "r");
-    $id = fgets($myfile);
-    fclose($myfile);
-    $sql = "SELECT * FROM reg_user WHERE username = '$id' AND DELETED = 0";
-    $result = mysqli_query($con, $sql);
-    $count  = mysqli_num_rows($result);
-    if ($count != 0) {
-?>
-        <script>
-            window.location.href = "update_user.php";
-        </script>
-<?php
-    }
-}elseif (isset($_POST['btn-user-delete'])) {
-    $myfile = fopen("id.txt", "r");
-    $id = fgets($myfile);
-    fclose($myfile);
-    $sql = "UPDATE reg_user SET DELETED = 1 where username = '$id'";
-    if (mysqli_query($con, $sql)) {
-        echo "Record Deleted successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-} elseif (isset($_POST['btn-user-update'])) {
-    $myfile = fopen("id.txt", "r");
-    $id = fgets($myfile);
-    fclose($myfile);
-    $sql = "SELECT * FROM reg_user WHERE username = '$id' AND DELETED = 0";
-    $result = mysqli_query($con, $sql);
-    $count  = mysqli_num_rows($result);
-    if ($count != 0) {
-?>
-        <script>
-            window.location.href = "update_user.php";
+            window.location.href = "doc_profile_updation.php";
         </script>
 <?php
     }

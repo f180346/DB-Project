@@ -24,7 +24,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="p-regno" id="lb-p-reg">Doctor's ID</label>
-                            <input type="text" class="form-control" name="p-regno" placeholder="Doctor ID">
+                            <input type="text" class="form-control" name="p-regno" pattern="[0-9]+" placeholder="Doctor ID">
                         </div>
                     </div>
 
@@ -145,7 +145,7 @@ if (isset($_POST['doc_register'])) {
 
 ?>
             <script type="text/javascript">
-                window.location = "signin.php";
+                window.location = "dash.php";
             </script>
 <?php
             echo "New record created successfully";
